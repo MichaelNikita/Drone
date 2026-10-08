@@ -162,6 +162,8 @@ form.addEventListener("submit", async (e) => {
       // Apps Script не віддає CORS-заголовки, тому шлемо простий form-запит у режимі no-cors
       await fetch(FORM_ENDPOINT, { method: "POST", mode: "no-cors", body: data });
     }
+    // Подія «Lead» для Meta Pixel — для оптимізації реклами на заявки
+    if (window.fbq) fbq("track", "Lead");
     form.reset();
     msg.textContent = "Дякую! Анкету отримано — наша команда зв’яжеться з тобою.";
     msg.classList.add("ok");
