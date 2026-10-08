@@ -1,6 +1,6 @@
 // Адреса веб-застосунку Google Apps Script (закінчується на /exec), який пише заявки в таблицю.
 // Як отримати — див. README.md. Поки порожньо, форма працює в демо-режимі (лише показує подяку).
-const FORM_ENDPOINT = "";
+const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbyfq8v9Sb-Yi3S5a6eX1oM0KJY59ai_xK1jj44JWex57pMexmaHNeoWy5MLAQQapas/exec";
 
 // UTM-мітки та ідентифікатори кліків: зберігаємо при вході, щоб не загубились
 // після переходів чи перезавантаження, і передаємо разом з анкетою.
