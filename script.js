@@ -2,6 +2,30 @@
 // Як отримати — див. README.md. Поки порожньо, форма працює в демо-режимі (лише показує подяку).
 const FORM_ENDPOINT = "";
 
+// UTM-мітки та ідентифікатори кліків: зберігаємо при вході, щоб не загубились
+// після переходів чи перезавантаження, і передаємо разом з анкетою.
+const TRACK_KEYS = [
+  "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id",
+  "fbclid", "gclid", "ttclid",
+];
+const TRACK_STORE = "lead_tracking";
+
+function loadTracking() {
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(TRACK_STORE)) || {}; } catch {}
+  const qs = new URLSearchParams(location.search);
+  const fresh = {};
+  TRACK_KEYS.forEach((k) => { const v = qs.get(k); if (v) fresh[k] = v; });
+  // Нові мітки з URL повністю замінюють старі (атрибуція за останнім переходом)
+  if (Object.keys(fresh).length) {
+    saved = { ...fresh, landing: location.href, referrer: document.referrer || "" };
+    try { localStorage.setItem(TRACK_STORE, JSON.stringify(saved)); } catch {}
+  }
+  if (!saved.referrer && document.referrer) saved.referrer = document.referrer;
+  return saved;
+}
+const tracking = loadTracking();
+
 document.getElementById("year").textContent = new Date().getFullYear();
 
 // Відео: вставляє iframe лише після кліку
@@ -43,6 +67,9 @@ form.addEventListener("submit", async (e) => {
   const data = new URLSearchParams(new FormData(form));
   data.delete("agree");
   data.set("page", location.href);
+  TRACK_KEYS.forEach((k) => data.set(k, tracking[k] || ""));
+  data.set("landing", tracking.landing || location.href);
+  data.set("referrer", tracking.referrer || "");
   const btn = form.querySelector("button[type=submit]");
   btn.disabled = true;
   try {

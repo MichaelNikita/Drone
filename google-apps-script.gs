@@ -13,6 +13,17 @@ const COLUMNS = [
   ["occupation", "Чим займається"],
   ["experience", "Досвід пайки"],
   ["page", "Сторінка"],
+  ["utm_source", "utm_source"],
+  ["utm_medium", "utm_medium"],
+  ["utm_campaign", "utm_campaign"],
+  ["utm_content", "utm_content"],
+  ["utm_term", "utm_term"],
+  ["utm_id", "utm_id"],
+  ["fbclid", "fbclid"],
+  ["gclid", "gclid"],
+  ["ttclid", "ttclid"],
+  ["landing", "Сторінка входу"],
+  ["referrer", "Referrer"],
 ];
 
 function getSheet_() {
