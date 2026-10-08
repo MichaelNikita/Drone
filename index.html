@@ -77,12 +77,21 @@
       <div class="hero__badge" aria-hidden="true"><svg class="ic"><use href="#i-drone"/></svg></div>
     </div>
 
-    <div class="video" id="video">
-      <!-- Відео: data-src="https://www.youtube.com/embed/ID" -->
-      <button class="video__play" type="button" data-src="https://www.youtube.com/embed/xPRZtLe-GAs" aria-label="Дивитися відеоурок">
+    <div class="video" id="video" data-yt="xPRZtLe-GAs">
+      <div class="video__frame"><div id="yt-player"></div></div>
+      <!-- Прозорий шар: перехоплює наведення/кліки, щоб YouTube не показував свої панелі -->
+      <div class="video__shield"></div>
+      <button class="video__play" type="button" aria-label="Дивитися відеоурок">
         <span class="video__btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
         <span class="video__label">Дивитися відеоурок</span>
       </button>
+      <div class="video__bar" hidden>
+        <button class="vbtn" data-act="toggle" aria-label="Пауза"><svg viewBox="0 0 24 24"><path class="i-pause" d="M7 5h3v14H7zM14 5h3v14h-3z"/><path class="i-play" d="M8 5v14l11-7z"/></svg></button>
+        <span class="video__time">0:00 / 0:00</span>
+        <div class="video__track" role="slider" aria-label="Перемотування" tabindex="0"><div class="video__fill"></div></div>
+        <button class="vbtn" data-act="mute" aria-label="Звук"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="i-wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="i-mute" d="m16 9 6 6M22 9l-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <button class="vbtn" data-act="fs" aria-label="На весь екран"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+      </div>
     </div>
   </div>
 </section>

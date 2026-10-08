@@ -28,20 +28,105 @@ const tracking = loadTracking();
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Відео: вставляє iframe лише після кліку
-const play = document.querySelector(".video__play");
-play.addEventListener("click", () => {
-  const src = play.dataset.src;
-  if (!src) {
-    play.querySelector(".video__label").textContent = "Відео скоро з’явиться";
-    return;
+// Відео: YouTube без його інтерфейсу — власні кнопки, без назви, субтитрів,
+// «Інші відео» та кінцевих підказок. Плеєр вантажиться лише після кліку.
+const video = document.getElementById("video");
+const cover = video.querySelector(".video__play");
+const bar = video.querySelector(".video__bar");
+const fill = video.querySelector(".video__fill");
+const track = video.querySelector(".video__track");
+const timeEl = video.querySelector(".video__time");
+let player = null;
+let tick = null;
+
+const fmt = (t) => {
+  t = Math.max(0, Math.floor(t || 0));
+  const h = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), sec = String(t % 60).padStart(2, "0");
+  return h ? `${h}:${String(m).padStart(2, "0")}:${sec}` : `${m}:${sec}`;
+};
+const hideCaptions = () => {
+  try { player.unloadModule("captions"); player.unloadModule("cc"); } catch {}
+};
+const update = () => {
+  if (!player || !player.getDuration) return;
+  const d = player.getDuration() || 0, c = player.getCurrentTime() || 0;
+  fill.style.width = d ? (c / d) * 100 + "%" : "0";
+  timeEl.textContent = `${fmt(c)} / ${fmt(d)}`;
+};
+
+function onState(e) {
+  const S = YT.PlayerState;
+  video.classList.toggle("is-playing", e.data === S.PLAYING || e.data === S.BUFFERING);
+  if (e.data === S.PLAYING) {
+    hideCaptions();
+    video.classList.add("is-started");
+    cover.hidden = true;
+    clearInterval(tick); tick = setInterval(update, 250);
+  } else {
+    clearInterval(tick); update();
   }
-  const iframe = document.createElement("iframe");
-  iframe.src = src + (src.includes("?") ? "&" : "?") + "autoplay=1";
-  iframe.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
-  iframe.allowFullscreen = true;
-  iframe.title = "Відеоурок: Пайка дронів з нуля";
-  play.replaceWith(iframe);
+  // На паузі й наприкінці ховаємо екран YouTube з рекомендаціями своєю обкладинкою
+  if (e.data === S.PAUSED || e.data === S.ENDED) {
+    cover.hidden = false;
+    cover.querySelector(".video__label").textContent = e.data === S.ENDED ? "Переглянути ще раз" : "Продовжити перегляд";
+  }
+}
+
+function createPlayer() {
+  player = new YT.Player("yt-player", {
+    host: "https://www.youtube-nocookie.com",
+    videoId: video.dataset.yt,
+    playerVars: {
+      autoplay: 1, controls: 0, rel: 0, modestbranding: 1, iv_load_policy: 3,
+      cc_load_policy: 0, disablekb: 1, fs: 0, playsinline: 1, showinfo: 0,
+      origin: location.origin,
+    },
+    events: {
+      onReady: (e) => { hideCaptions(); e.target.playVideo(); bar.hidden = false; update(); },
+      onStateChange: onState,
+      onApiChange: hideCaptions,
+    },
+  });
+}
+
+const togglePlay = () => {
+  if (!player || !player.getPlayerState) return;
+  const st = player.getPlayerState();
+  st === YT.PlayerState.PLAYING || st === YT.PlayerState.BUFFERING ? player.pauseVideo() : player.playVideo();
+};
+
+cover.addEventListener("click", () => {
+  if (player) { player.playVideo(); return; }
+  cover.querySelector(".video__label").textContent = "Завантаження…";
+  if (window.YT && YT.Player) return createPlayer();
+  window.onYouTubeIframeAPIReady = createPlayer;
+  const tag = document.createElement("script");
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.head.appendChild(tag);
+});
+video.querySelector(".video__shield").addEventListener("click", togglePlay);
+
+bar.addEventListener("click", (e) => {
+  const act = e.target.closest("[data-act]")?.dataset.act;
+  if (act === "toggle") togglePlay();
+  if (act === "mute") {
+    player.isMuted() ? player.unMute() : player.mute();
+    video.classList.toggle("is-muted", !player.isMuted());
+  }
+  if (act === "fs") {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else (video.requestFullscreen || video.webkitRequestFullscreen)?.call(video);
+  }
+});
+const seek = (clientX) => {
+  const r = track.getBoundingClientRect();
+  const k = Math.min(1, Math.max(0, (clientX - r.left) / r.width));
+  player.seekTo(k * player.getDuration(), true); update();
+};
+track.addEventListener("click", (e) => seek(e.clientX));
+track.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight") player.seekTo(player.getCurrentTime() + 10, true);
+  if (e.key === "ArrowLeft") player.seekTo(player.getCurrentTime() - 10, true);
 });
 
 // Анкета
