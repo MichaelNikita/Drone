@@ -2,6 +2,21 @@
 
 Статичний сайт (`index.html`, `styles.css`, `script.js`), дизайн і контент — з презентації.
 
-- **Відео:** у `index.html` задай `data-src="https://www.youtube.com/embed/ID"` на кнопці `.video__play`.
-- **Анкета:** у `script.js` вкажи `FORM_ENDPOINT` (webhook / Google Apps Script / Formspree). Без нього форма працює в демо-режимі (лише показує подяку).
+- **Відео:** `data-src` на кнопці `.video__play` в `index.html` (зараз — https://youtu.be/xPRZtLe-GAs).
 - **Хостинг:** будь-який статичний (GitHub Pages, Netlify, Vercel) — просто відкрий `index.html`.
+
+## Анкета → Google-таблиця
+
+Заявки пишуться в [таблицю](https://docs.google.com/spreadsheets/d/1oOYth86DXxONgfKsvrdMuvFUHmsdyQ3O6YHD3oUhlB4/edit) через Google Apps Script (`google-apps-script.gs`).
+
+1. Відкрий таблицю → **Розширення → Apps Script**.
+2. Видали код у `Code.gs`, встав увесь вміст `google-apps-script.gs`, збережи.
+3. **Розгорнути → Нове розгортання** → тип **Вебзастосунок**:
+   - «Виконувати як» — **Я**;
+   - «Хто має доступ» — **Усі**.
+4. Натисни «Розгорнути», дозволь доступ до таблиці (Google попередить про неперевірений застосунок — «Додатково → Перейти»).
+5. Скопіюй **URL вебзастосунку** (закінчується на `/exec`) і встав у `script.js`:
+   `const FORM_ENDPOINT = "https://script.google.com/macros/s/.../exec";`
+
+Перша заявка сама створить рядок заголовків: Дата, Ім’я, Телефон, Telegram, Місто, Чим займається, Досвід пайки, Сторінка.
+Якщо змінюєш код скрипта — роби **Керувати розгортаннями → Редагувати → Нова версія**, тоді URL лишиться тим самим.

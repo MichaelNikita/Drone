@@ -1,5 +1,5 @@
-// Куди надсилати анкету. Залиш порожнім — заявка лише покаже подяку (демо-режим).
-// Наприклад: адреса Google Apps Script, Formspree, Make/Zapier webhook або твого бекенда.
+// Адреса веб-застосунку Google Apps Script (закінчується на /exec), який пише заявки в таблицю.
+// Як отримати — див. README.md. Поки порожньо, форма працює в демо-режимі (лише показує подяку).
 const FORM_ENDPOINT = "";
 
 document.getElementById("year").textContent = new Date().getFullYear();
@@ -40,17 +40,15 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  const data = Object.fromEntries(new FormData(form));
+  const data = new URLSearchParams(new FormData(form));
+  data.delete("agree");
+  data.set("page", location.href);
   const btn = form.querySelector("button[type=submit]");
   btn.disabled = true;
   try {
     if (FORM_ENDPOINT) {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error(res.status);
+      // Apps Script не віддає CORS-заголовки, тому шлемо простий form-запит у режимі no-cors
+      await fetch(FORM_ENDPOINT, { method: "POST", mode: "no-cors", body: data });
     }
     form.reset();
     msg.textContent = "Дякую! Анкету отримано — наша команда зв’яжеться з тобою.";
