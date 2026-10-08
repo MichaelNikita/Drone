@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пайка дронів з нуля</title>
+<meta name="description" content="Відеоурок: як зайти в професію складальника і паяльника дронів, яку бронюють оборонні виробництва — навіть якщо ти ніколи не тримав паяльник.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-cyan" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe8dc"/><stop offset="1" stop-color="#8b6cff"/></linearGradient>
+  </defs>
+  <symbol id="i-drone" viewBox="0 0 24 24"><path d="M10 10 7.5 7.5M14 10l2.5-2.5M10 14l-2.5 2.5M14 14l2.5 2.5"/><rect x="10" y="10" width="4" height="4"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9.5c0-1.4-1.3-2-3-2s-3 .8-3 2c0 2.8 6 1.3 6 4.2 0 1.3-1.3 2.3-3 2.3s-3-.7-3-2M12 6v1.5M12 16v1.5"/></symbol>
+  <symbol id="i-factory" viewBox="0 0 24 24"><path d="M3 20h18M4 20V11l5 3v-3l5 3V5h4v15"/><path d="M8 17h1M12 17h1"/></symbol>
+  <symbol id="i-file-check" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m9 14 2 2 4-4"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="8" cy="7" r="2"/><circle cx="16" cy="7" r="2"/><circle cx="12" cy="13" r="2"/><path d="M4 13a3 3 0 0 1 3-2M20 13a3 3 0 0 0-3-2M9 20a3 3 0 0 1 6 0"/></symbol>
+  <symbol id="i-steth" viewBox="0 0 24 24"><path d="M6 3v5a4 4 0 0 0 8 0V3"/><path d="M10 12v2a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="10" r="2"/></symbol>
+  <symbol id="i-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M3.5 10h6M14.5 10h6M12 14v7"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2 11h11l2-8H6"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></symbol>
+  <symbol id="i-hammer" viewBox="0 0 24 24"><path d="m14 4 6 6-3 3-6-6z"/><path d="m11 10-7 7a1.4 1.4 0 0 0 2 2l7-7"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8-1.3-1.3a4 4 0 0 1-5-5L14 2z" transform="rotate(0)"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-8-4.5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 9c0 6.5-8 11-8 11z"/><path d="M6 12h3l1.5-2 2 4 1.5-2h4"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18V6M3 14h18v4M21 14v-3a2 2 0 0 0-2-2h-7v5"/><circle cx="7.5" cy="10" r="1.8"/></symbol>
+  <symbol id="i-beach" viewBox="0 0 24 24"><path d="M3 19c1.5 0 1.5 1 3 1s1.5-1 3-1 1.5 1 3 1 1.5-1 3-1 1.5 1 3 1"/><path d="M12 16 9 8"/><path d="M4 9a8 8 0 0 1 12-4z"/></symbol>
+  <symbol id="i-food" viewBox="0 0 24 24"><path d="M6 3v7a2 2 0 0 0 2 2v9M8 3v6M10 3v7a2 2 0 0 1-2 2M17 21V3c-2 1-3 4-3 8h3"/></symbol>
+  <symbol id="i-bus" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M3 11h18M8 5v6M13 5v6"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></symbol>
+  <symbol id="i-person-heart" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3.5"/><path d="M3 20a6 6 0 0 1 6-6"/><path d="M17 21s-4-2.3-4-5a2 2 0 0 1 4-1 2 2 0 0 1 4 1c0 2.7-4 5-4 5z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="m3 6 1.5 1.5L7 5M3 12l1.5 1.5L7 11M3 18l1.5 1.5L7 17M10 6h11M10 12h11M10 18h11"/></symbol>
+  <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 10h18L12 4zM5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/><path d="m13 11 7-7M17 4h3v3"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17h.01"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><circle cx="12" cy="11" r="1.5"/><path d="M12 12.5V15"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 12 0M16 4.5a3.5 3.5 0 0 1 0 7M21 20a6 6 0 0 0-3-5.2"/></symbol>
+  <symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 5a3 3 0 0 0-5.5-1.5A3 3 0 0 0 4 8a3 3 0 0 0 0 6 3 3 0 0 0 3 5 3 3 0 0 0 5 0 3 3 0 0 0 5 0 3 3 0 0 0 3-5 3 3 0 0 0 0-6 3 3 0 0 0-2.5-4.5A3 3 0 0 0 12 5zM12 5v14"/></symbol>
+  <symbol id="i-user-check" viewBox="0 0 24 24"><circle cx="10" cy="7" r="3.5"/><path d="M4 20a6 6 0 0 1 9-5.2"/><path d="m15 18 2 2 4-4"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><rect x="9" y="2.5" width="6" height="3" rx="1"/><path d="m9 13 2 2 4-4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+</defs>
+</svg>
+
+<header class="topbar">
+  <div class="wrap topbar__in">
+    <a href="#top" class="logo"><svg class="ic"><use href="#i-drone"/></svg><span>Пайка дронів з нуля</span></a>
+    <a href="#form" class="btn btn--small">Заповнити анкету</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO + VIDEO -->
+<section class="hero bg-a">
+  <div class="wrap">
+    <div class="hero__grid">
+      <div>
+        <p class="eyebrow">Відеоурок</p>
+        <h1>Пайка дронів<br>з нуля</h1>
+        <p class="lead">Як зайти в професію, яку бронюють оборонні виробництва — навіть якщо ти ніколи не тримав паяльник</p>
+        <a href="#form" class="btn">Заповнити анкету</a>
+      </div>
+      <div class="hero__badge" aria-hidden="true"><svg class="ic"><use href="#i-drone"/></svg></div>
+    </div>
+
+    <div class="video" id="video">
+      <!-- Встав сюди посилання на своє відео: data-src="https://www.youtube.com/embed/ID" -->
+      <button class="video__play" type="button" data-src="" aria-label="Дивитися відеоурок">
+        <span class="video__btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="video__label">Дивитися відеоурок</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 1: HOOK -->
+<section class="sec bg-b">
+  <div class="wrap">
+    <p class="eyebrow">Блок 1 · Хук</p>
+    <h2>А чи 100% ти будеш заброньований — і як довго?</h2>
+    <p class="lead">Не знаєш відповіді — або знаєш, що «ні»? Цей урок для тебе.</p>
+    <div class="grid g3">
+      <div class="card"><span class="badge"><svg class="ic"><use href="#i-shield"/></svg></span><h3>Професія, яку бронюють</h3><p>оборонні виробництва</p></div>
+      <div class="card"><span class="badge badge--blue"><svg class="ic"><use href="#i-clock"/></svg></span><h3>Навчання з нуля</h3><p>кілька тижнів, без технічної освіти</p></div>
+      <div class="card"><span class="badge badge--pink"><svg class="ic"><use href="#i-coin"/></svg></span><h3 class="t-cyan">від 40 000 грн</h3><p>дохід у цій професії</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU'LL LEARN -->
+<section class="sec bg-c">
+  <div class="wrap">
+    <p class="eyebrow">Блок 1 · Що буде в уроці</p>
+    <h2>У цьому уроці ти дізнаєшся</h2>
+    <div class="rows">
+      <div class="row"><span class="num">1</span><h3>Що це за професія</h3></div>
+      <div class="row"><span class="num">2</span><h3>Як у неї зайти</h3></div>
+      <div class="row row--accent"><span class="num">3</span><h3>Як пройти відбір — включно з етапом, на якому відсіюється більшість</h3></div>
+    </div>
+    <div class="card card--note">
+      <p class="t-cyan strong">Мене звати Олег</p>
+      <p>Рік тому був медиком. Сьогодні працюю на оборонному виробництві в Києві</p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 2: WHY -->
+<section class="sec bg-a">
+  <div class="wrap">
+    <p class="eyebrow">Блок 2 · Чому саме ця професія</p>
+    <h2>Бронювання прив’язане не до тебе — а до підприємства</h2>
+    <div class="flow">
+      <div class="card"><span class="badge badge--pink"><svg class="ic"><use href="#i-factory"/></svg></span><h3>Немає статусу критично важливого</h3><p>Компанія тебе не забронює — навіть якщо дуже захоче</p></div>
+      <svg class="flow__arrow"><use href="#i-arrow"/></svg>
+      <div class="card"><span class="badge badge--blue"><svg class="ic"><use href="#i-file-check"/></svg></span><h3>Статус є</h3><p>Його треба підтверджувати</p></div>
+      <svg class="flow__arrow"><use href="#i-arrow"/></svg>
+      <div class="card"><span class="badge"><svg class="ic"><use href="#i-file"/></svg></span><h3>Чужі документи і чужі рішення</h3><p>На них тримається навіть бронь</p></div>
+    </div>
+    <div class="card card--accent card--big">
+      <svg class="ic ic--line t-cyan"><use href="#i-shield"/></svg>
+      <div>
+        <p class="big">Тебе захищає не бронь.<br>Тебе захищає професія.</p>
+        <p>Навичка, яка потрібна підприємствам, що мають право бронювати. Твої руки потрібні — візьме будь-яке з них, а не одне-єдине.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFESSION + 5 REASONS -->
+<section class="sec bg-b">
+  <div class="wrap">
+    <p class="eyebrow">Блок 2 · Професія</p>
+    <h2>Складальник і паяльник дронів</h2>
+    <p class="lead">Людина, яка своїми руками збирає і ремонтує дрони на виробництві</p>
+    <p class="eyebrow eyebrow--sub">5 причин, чому саме вона</p>
+    <div class="rows">
+      <a class="row" href="#r1"><span class="num">1</span><h3>Працюєш там, де держава хоче, щоб ти залишався</h3></a>
+      <a class="row" href="#r2"><span class="num">2</span><h3>Рук не вистачає — беруть без досвіду</h3></a>
+      <a class="row" href="#r3"><span class="num">3</span><h3>Вчишся тижні, а не роки</h3></a>
+      <a class="row" href="#r4"><span class="num">4</span><h3>Гроші: від 40 000 грн</h3></a>
+      <a class="row row--accent" href="#r5"><span class="num">5</span><h3>Ти не ховаєшся — ти в системі</h3></a>
+    </div>
+  </div>
+</section>
+
+<!-- REASON 1 -->
+<section class="sec bg-c" id="r1">
+  <div class="wrap">
+    <p class="eyebrow">Причина 1 з 5</p>
+    <h2>Ти працюєш там, де держава хоче, щоб ти залишався</h2>
+    <div class="grid g2">
+      <div class="card"><span class="badge"><svg class="ic"><use href="#i-factory"/></svg></span><h3>Оборонні виробництва</h3><p>Це підприємства, які держава визнає критично важливими</p></div>
+      <div class="card"><span class="badge badge--blue"><svg class="ic"><use href="#i-users"/></svg></span><h3>Окремі правила</h3><p>Для частини оборонних компаній діють окремі правила щодо того, скільки працівників можна бронювати</p></div>
+      <div class="card card--dark"><svg class="ic ic--line t-pink"><use href="#i-x"/></svg><h3 class="t-muted">Не туди, де «колись, може, оформлять»</h3></div>
+      <div class="card card--accent"><svg class="ic ic--line t-cyan"><use href="#i-check"/></svg><h3>А туди, де держава сама зацікавлена, щоб ти був на робочому місці</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- REASON 2 -->
+<section class="sec bg-a" id="r2">
+  <div class="wrap">
+    <p class="eyebrow">Причина 2 з 5</p>
+    <h2>Дронів потрібно більше, ніж є людей, які вміють їх збирати</h2>
+    <p class="lead">Виробництва ростуть — тому беруть без досвіду</p>
+    <p class="eyebrow eyebrow--sub">Кого беруть</p>
+    <div class="grid g2">
+      <div class="card card--row"><span class="badge"><svg class="ic"><use href="#i-steth"/></svg></span><h3>Колишні медики</h3></div>
+      <div class="card card--row"><span class="badge badge--blue"><svg class="ic"><use href="#i-wheel"/></svg></span><h3>Водії</h3></div>
+      <div class="card card--row"><span class="badge badge--pink"><svg class="ic"><use href="#i-cart"/></svg></span><h3>Продавці</h3></div>
+      <div class="card card--row"><span class="badge"><svg class="ic"><use href="#i-hammer"/></svg></span><h3>Будівельники</h3></div>
+    </div>
+    <div class="card card--accent center"><h3>Усіх, навіть тих, у кого до цього не було нічого спільного з технікою</h3></div>
+  </div>
+</section>
+
+<!-- REASON 3 -->
+<section class="sec bg-b" id="r3">
+  <div class="wrap">
+    <p class="eyebrow">Причина 3 з 5</p>
+    <h2>Вчишся тижні, а не роки</h2>
+    <div class="grid g2">
+      <div class="card card--dark"><p class="eyebrow t-muted">Інженер</p><p class="stat t-muted">5 років</p><p>університету</p></div>
+      <div class="card card--accent"><p class="eyebrow">Складальник дронів</p><p class="stat t-cyan">кілька тижнів</p><p>щоденної практики — і базова впевненість рук</p></div>
+    </div>
+    <p class="eyebrow eyebrow--sub">Це навичка рук</p>
+    <div class="grid g3">
+      <div class="card"><span class="badge"><svg class="ic"><use href="#i-wrench"/></svg></span><h3>Паяти</h3></div>
+      <div class="card"><span class="badge badge--blue"><svg class="ic"><use href="#i-bolt"/></svg></span><h3>Міняти компоненти</h3></div>
+      <div class="card"><span class="badge badge--pink"><svg class="ic"><use href="#i-chip"/></svg></span><h3>Розуміти, як з’єднуються мотор, регулятор і контролер</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- REASON 4: MONEY -->
+<section class="sec bg-c" id="r4">
+  <div class="wrap">
+    <p class="eyebrow">Причина 4 з 5 · Гроші</p>
+    <h2>Нормальний дохід у цій професії</h2>
+    <div class="money">
+      <div class="card money__big"><p class="huge t-cyan">ВІД<br>40 000</p></div>
+      <div class="card"><h3 class="t-cyan">На старті — вже достойна ЗП</h3><p>Я, наприклад, заходив на 28 000</p></div>
+      <div class="card"><h3 class="t-pink">Ріст швидкий</h3><p>Через пів року я вийшов на 60 000</p></div>
+    </div>
+    <div class="card card--dark center"><h3>І це без соціального пакета — про нього далі</h3></div>
+
+    <p class="eyebrow eyebrow--top">Причина 4 з 5 · Соцпакет</p>
+    <h2>А ще — соціальний пакет</h2>
+    <p class="lead">Приклад із мого місця роботи</p>
+    <div class="grid g2">
+      <div class="card card--row"><span class="badge"><svg class="ic"><use href="#i-heart"/></svg></span><h3>Соціальна і медична страховка — аж до оплати операції</h3></div>
+      <div class="card card--row"><span class="badge badge--blue"><svg class="ic"><use href="#i-bed"/></svg></span><h3>Оплачувані лікарняні</h3></div>
+      <div class="card card--row"><span class="badge badge--pink"><svg class="ic"><use href="#i-beach"/></svg></span><h3>22–24 дні оплачуваної відпустки</h3></div>
+      <div class="card card--row"><span class="badge"><svg class="ic"><use href="#i-food"/></svg></span><h3>Компанія платить половину за обіди</h3></div>
+      <div class="card card--row"><span class="badge badge--blue"><svg class="ic"><use href="#i-bus"/></svg></span><h3>Розвозка додому після зміни</h3></div>
+      <div class="card card--row"><span class="badge badge--pink"><svg class="ic"><use href="#i-cap"/></svg></span><h3>Англійська і навчання на інші посади — за рахунок компанії</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- REASON 5 -->
+<section class="sec bg-d" id="r5">
+  <div class="wrap">
+    <p class="eyebrow t-pink">Причина 5 з 5 · Найважливіша</p>
+    <h2 class="h-xl">Ти не ховаєшся.<br>Ти — в системі.</h2>
+    <div class="card card--big-pad">
+      <svg class="ic ic--line ic--xl t-cyan"><use href="#i-drone"/></svg>
+      <p class="big">Кожен дрон, який виходить з нашого цеху, їде туди, де він реально рятує життя.</p>
+      <p class="big t-cyan">І ти будеш тим, хто його зібрав.</p>
+    </div>
+    <div class="card card--pink card--big">
+      <svg class="ic ic--line t-pink"><use href="#i-person-heart"/></svg>
+      <div>
+        <p class="t-pink strong">Відчуття «я тут, а хлопці там»?</p>
+        <p class="t-white">Ця робота відповідає на це питання: ти не осторонь. Ти в системі — просто на своєму місці.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 3: MY PATH -->
+<section class="sec bg-a">
+  <div class="wrap">
+    <p class="eyebrow">Блок 3 · Мій шлях</p>
+    <h2>Від медика до оборонного виробництва</h2>
+    <ol class="timeline">
+      <li><span class="num">1</span><p><b>Медик.</b> Дохід не росте: «ще п’ять років на цьому ж місці»</p></li>
+      <li><span class="num">2</span><p><b>Реклама компанії.</b> «А чому ні?» — паяльник до того не тримав жодного разу</p></li>
+      <li><span class="num">3</span><p><b>Два курси.</b> Один — у військовій частині, другий — в іншій організації</p></li>
+      <li><span class="num">4</span><p><b>Співбесіда</b> — уже з сертифікатами</p></li>
+      <li><span class="num">5</span><p><b>Дзвінок рекрутера</b> — 2–3 хвилини. Потім поліграф</p></li>
+      <li><span class="num">6</span><p><b>Перша компанія не зайшла</b> — погані умови. Перейшов в іншу</p></li>
+      <li class="timeline__last"><span class="num num--pink">7</span><p class="t-cyan big">Через пів року — 60 000 грн</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="sec bg-b">
+  <div class="wrap">
+    <p class="eyebrow">Блок 3 · До і після</p>
+    <h2>Пів року: до і після</h2>
+    <div class="grid g2">
+      <div class="card card--dark">
+        <p class="eyebrow t-pink">Було · медик</p>
+        <ul class="ticks">
+          <li class="no">Дохід стоїть на місці: ще п’ять років так само</li>
+          <li class="no">Постійний страх: «а раптом доведеться їхати»</li>
+          <li class="no">Жодного разу не тримав паяльник</li>
+        </ul>
+      </div>
+      <div class="card card--accent">
+        <p class="eyebrow">Стало · спеціаліст</p>
+        <ul class="ticks">
+          <li class="yes">60 000 грн — через пів року</li>
+          <li class="yes">Спеціаліст, якого поважають</li>
+          <li class="yes">Складні, красиві речі — не тягаю коробки</li>
+          <li class="yes">Допомагаю людям і своїй країні</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MYTH -->
+<section class="sec bg-c">
+  <div class="wrap">
+    <p class="eyebrow">Блок 3 · Перша компанія не зайшла</p>
+    <h2>«З оборонки не звільнишся» — це міф</h2>
+    <div class="grid g2">
+      <div class="card card--dark"><p class="eyebrow t-pink">Міф</p><h3 class="t-muted">Тримайся за те, що є — звідти не піти</h3></div>
+      <div class="card card--accent"><p class="eyebrow">Реальність</p><h3>Я пішов з першої компанії і перейшов в іншу</h3><p>Що не влаштувало: інструмент, який видають, і приміщення, де сидиш по вісім годин</p></div>
+    </div>
+    <div class="card card--big">
+      <span class="badge badge--lg"><svg class="ic"><use href="#i-shield"/></svg></span>
+      <div>
+        <p class="big">Головне — зробити це правильно, щоб не залишитися без захисту між двома роботами</p>
+        <p class="t-cyan strong">Як саме — окремо розповідаю в навчанні</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 4: THREE STAGES -->
+<section class="sec bg-a">
+  <div class="wrap">
+    <p class="eyebrow">Блок 4 · Шлях в дронах</p>
+    <h2>Три етапи — від нуля до першого робочого дня</h2>
+    <div class="flow">
+      <div class="card"><div class="stage__head"><span class="badge badge--lg"><svg class="ic"><use href="#i-wrench"/></svg></span><span class="stage__n">1</span></div><h3 class="caps">Навичка</h3><p>Паяти, міняти компоненти, розуміти, як усе з’єднується</p></div>
+      <svg class="flow__arrow"><use href="#i-arrow"/></svg>
+      <div class="card"><div class="stage__head"><span class="badge badge--lg badge--blue"><svg class="ic"><use href="#i-factory"/></svg></span><span class="stage__n">2</span></div><h3 class="caps">Виробництво</h3><p>Обрати підприємство, де ти справді потрапиш у систему</p></div>
+      <svg class="flow__arrow"><use href="#i-arrow"/></svg>
+      <div class="card"><div class="stage__head"><span class="badge badge--lg badge--pink"><svg class="ic"><use href="#i-clipboard"/></svg></span><span class="stage__n">3</span></div><h3 class="caps">Відбір</h3><p>Резюме → розмова з рекрутером → поліграф</p></div>
+    </div>
+    <div class="banner">Результат: перший робочий день</div>
+  </div>
+</section>
+
+<!-- STAGE 1 -->
+<section class="sec bg-b">
+  <div class="wrap">
+    <p class="eyebrow">Етап 1 · Навичка</p>
+    <h2>Почати може кожен — навіть якщо ніколи не паяв</h2>
+    <p class="lead">Тут не перевіряють, як ти тримаєш інструмент. Головне — результат.</p>
+    <p class="eyebrow eyebrow--sub">Ідеальний кандидат вже вміє</p>
+    <div class="grid g2">
+      <div class="card card--row"><span class="badge badge--lg"><svg class="ic"><use href="#i-check"/></svg></span><h3>Впевнено паяти роз’єми і проводи</h3></div>
+      <div class="card card--row"><span class="badge badge--lg badge--blue"><svg class="ic"><use href="#i-check"/></svg></span><h3>Міняти компоненти на платі</h3></div>
+      <div class="card card--row"><span class="badge badge--lg"><svg class="ic"><use href="#i-check"/></svg></span><h3>Розуміти, що таке регулятор, польотний контролер, мотор, приймач — і як вони з’єднані</h3></div>
+      <div class="card card--row"><span class="badge badge--lg badge--blue"><svg class="ic"><use href="#i-check"/></svg></span><h3>Працювати за чек-листом якості</h3></div>
+    </div>
+    <div class="banner banner--xl">Це не вища математика</div>
+  </div>
+</section>
+
+<!-- HOW TO LEARN -->
+<section class="sec bg-c">
+  <div class="wrap">
+    <p class="eyebrow">Етап 1 · Як вчитися</p>
+    <h2>Усе є на YouTube. Системи там немає</h2>
+    <div class="grid g2">
+      <div class="card card--dark">
+        <p class="eyebrow t-pink with-ic"><svg class="ic ic--line"><use href="#i-play"/></svg>Самостійно з YouTube</p>
+        <ul class="ticks">
+          <li class="no">Розрізнені відео без системи</li>
+          <li class="no">Сорок роликів, у яких кажуть протилежне</li>
+          <li class="no">Палиш плати методом спроб і помилок</li>
+          <li class="no">Кидаєш на другому тижні</li>
+        </ul>
+      </div>
+      <div class="card card--accent">
+        <p class="eyebrow with-ic"><svg class="ic ic--line"><use href="#i-person-heart"/></svg>З досвідченим наставником</p>
+        <ul class="ticks">
+          <li class="yes">Підкаже і покаже, як легше і правильніше</li>
+          <li class="yes">Не витрачаєш даремно час і запчастини</li>
+          <li class="yes">Чітка система замість розрізнених відео</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 2 -->
+<section class="sec bg-a">
+  <div class="wrap">
+    <p class="eyebrow">Етап 2 · Вибір виробництва</p>
+    <h2>Обери виробництво, де справді потрапиш у систему</h2>
+    <div class="flow">
+      <div class="card"><span class="badge"><svg class="ic"><use href="#i-list"/></svg></span><h3>У переліку критично важливих</h3><p>Бронювати можуть тільки такі підприємства</p></div>
+      <svg class="flow__arrow"><use href="#i-arrow"/></svg>
+      <div class="card"><span class="badge badge--blue"><svg class="ic"><use href="#i-bank"/></svg></span><h3>Бронь оформлює підприємство — через Дію</h3><p>Не ти, не курси, не посередники</p></div>
+      <svg class="flow__arrow"><use href="#i-arrow"/></svg>
+      <div class="card"><span class="badge badge--pink"><svg class="ic"><use href="#i-users"/></svg></span><h3>Бронь не автоматична</h3><p>Для більшості компаній є ліміт на кількість працівників</p></div>
+    </div>
+    <div class="grid g2">
+      <div class="card card--accent"><svg class="ic ic--line t-cyan"><use href="#i-target"/></svg><h3>Не будь-яке місце зі словом «дрони» у вакансії</h3><p>А те, де ти реально потрапиш у систему</p></div>
+      <div class="card card--pink"><svg class="ic ic--line t-pink"><use href="#i-alert"/></svg><h3>Не питай: «А ви мене забронюєте?»</h3><p>Це найгірше, що можна зробити. Правильні питання — в навчанні</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 3 -->
+<section class="sec bg-b">
+  <div class="wrap">
+    <p class="eyebrow t-pink">Етап 3 · Відбір</p>
+    <h2>Етап, про який не пише жодна вакансія</h2>
+    <p class="lead t-pink strong">Саме тут відсіюється більшість</p>
+    <div class="rows">
+      <div class="row row--wide"><span class="badge badge--lg"><svg class="ic"><use href="#i-file"/></svg></span><div><h3>Резюме</h3><p>Досвіду немає — це нормально. Але є речі, які туди треба вписати, і речі, через які відсіюють автоматично.</p></div><span class="row__stat row__stat--sm">без досвіду — ок</span></div>
+      <div class="row row--wide"><span class="badge badge--lg badge--blue"><svg class="ic"><use href="#i-phone"/></svg></span><div><h3>Розмова з рекрутером</h3><p>По телефону. Ніхто не питав формулу опору — питання конкретні, і відповідати треба конкретно.</p></div><span class="row__stat">2–3 хв</span></div>
+      <div class="row row--wide row--accent"><span class="badge badge--lg badge--pink"><svg class="ic"><use href="#i-lock"/></svg></span><div><h3>Поліграф</h3><p>Проходять усі. Це не допит — просто перевірка, що ти не загроза безпеці.</p></div><span class="row__stat">40–45 хв</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- POLYGRAPH -->
+<section class="sec bg-d">
+  <div class="wrap">
+    <p class="eyebrow t-pink">Етап 3 · Поліграф</p>
+    <h2>Поліграф лякає більше, ніж є насправді</h2>
+    <div class="poly">
+      <div class="card card--accent center"><p class="huge t-cyan">40–45</p><h3>хвилин</h3><p>Питання досить очевидні</p></div>
+      <div class="card">
+        <p class="eyebrow t-pink">Міф</p>
+        <h3 class="t-muted">«Мене там вивернуть навиворіт»</h3>
+        <p class="eyebrow eyebrow--top2">Реальність</p>
+        <p class="t-white">Це не допит і тебе не намагаються зловити — компанія просто перевіряє, що ти не становиш загрози безпеці</p>
+      </div>
+    </div>
+    <div class="grid g3">
+      <div class="card"><span class="badge"><svg class="ic"><use href="#i-people"/></svg></span><h3>Проходять усі</h3><p>Від прибиральниці до інженера — без винятків</p></div>
+      <div class="card"><span class="badge badge--blue"><svg class="ic"><use href="#i-brain"/></svg></span><h3>Валяться через паніку</h3><p>Не через секрети, а тому що накручують себе три дні до того</p></div>
+      <div class="card"><span class="badge badge--pink"><svg class="ic"><use href="#i-user-check"/></svg></span><h3>Я пройшов</h3><p>Медик, який уперше прийшов на оборонне підприємство — і нічого страшного</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 5: TRAINING -->
+<section class="sec bg-a">
+  <div class="wrap">
+    <p class="eyebrow">Блок 5 · Навчання</p>
+    <h2>Карта — ще не пройдений шлях</h2>
+    <p class="lead">Щоб реально вийти на роботу, потрібні три речі:</p>
+    <div class="rows">
+      <div class="row"><span class="num">1</span><h3>Розуміння, як діяти</h3></div>
+      <div class="row"><span class="num">2</span><h3>Підготовка до відбору на вакансію</h3></div>
+      <div class="row"><span class="num">3</span><h3>Людина, яка допоможе пройти шлях без стресу</h3></div>
+    </div>
+    <div class="banner">Тому я створив навчання з нуля</div>
+  </div>
+</section>
+
+<section class="sec bg-c">
+  <div class="wrap">
+    <p class="eyebrow">Блок 5 · Що всередині</p>
+    <h2>Програма навчання з нуля</h2>
+    <div class="grid g2">
+      <div class="card card--row"><span class="num">1</span><div><h3>Інструмент і безпека</h3><p>Як тримати паяльник, що таке припій, як не обпектися і не спалити плату</p></div></div>
+      <div class="card card--row"><span class="num">2</span><div><h3>Компоненти</h3><p>З чого складається дрон і як усе з’єднується</p></div></div>
+      <div class="card card--row"><span class="num">3</span><div><h3>Практика пайки</h3><p>Роз’єми, проводи, заміна компонентів. Ти паяєш — я розбираю твої помилки</p></div></div>
+      <div class="card card--row"><span class="num">4</span><div><h3>Резюме під нульовий досвід</h3><p>Готовий шаблон</p></div></div>
+      <div class="card card--row"><span class="num">5</span><div><h3>Співбесіда</h3><p>Які питання ставлять і як на них відповідати</p></div></div>
+      <div class="card card--row"><span class="num">6</span><div><h3>Поліграф</h3><p>Як прийти спокійним і не завалитися на нервах</p></div></div>
+      <div class="card card--row"><span class="num">7</span><div><h3>Вибір роботодавця</h3><p>Що питати, щоб зрозуміти, чи потрапиш ти в систему</p></div></div>
+      <div class="card card--accent"><h3 class="t-cyan">Результат</h3><p class="t-white big-p">За місяць — на роботі й спокійний за своє майбутнє. З готовим планом дій.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FIRST STEP + FORM -->
+<section class="sec bg-b" id="form">
+  <div class="wrap">
+    <p class="eyebrow">Блок 5 · Перший крок</p>
+    <h2>Заповни анкету — і я чекатиму тебе на курсі</h2>
+    <div class="form-grid">
+      <div class="rows rows--tight">
+        <div class="row row--accent"><span class="num">1</span><div><h3>Заповни анкету</h3><p>Під цим відео і в боті, де ти його отримав</p></div></div>
+        <div class="row"><span class="num">2</span><div><h3>Анкета ні до чого не зобов’язує</h3><p>Після неї з тобою зв’яжеться наша команда</p></div></div>
+        <div class="row"><span class="num">3</span><div><h3>Чесна відповідь</h3><p>Команда розбере твою ситуацію і скаже, чи підходить тобі навчання. Підходить не всім</p></div></div>
+        <div class="row"><span class="num">4</span><div><h3>Група обмежена</h3><p>Я розбираю роботу кожного учня поштучно: його пайку, помилки, резюме</p></div></div>
+      </div>
+
+      <form class="card form" id="lead-form" novalidate>
+        <h3>Анкета</h3>
+        <label>Ім’я<input name="name" type="text" autocomplete="name" required placeholder="Як до тебе звертатися"></label>
+        <label>Телефон<input name="phone" type="tel" autocomplete="tel" required placeholder="+380 __ ___ __ __"></label>
+        <label>Telegram<input name="telegram" type="text" placeholder="@username"></label>
+        <label>Місто<input name="city" type="text" placeholder="Наприклад, Київ"></label>
+        <label>Чим займаєшся зараз?
+          <select name="occupation">
+            <option value="">Оберіть варіант</option>
+            <option>Медицина</option>
+            <option>Водій</option>
+            <option>Торгівля / продажі</option>
+            <option>Будівництво</option>
+            <option>Інше</option>
+          </select>
+        </label>
+        <label>Чи тримав паяльник раніше?
+          <select name="experience">
+            <option value="">Оберіть варіант</option>
+            <option>Ніколи</option>
+            <option>Трохи пробував</option>
+            <option>Є досвід</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" name="agree" required> Погоджуюсь на обробку персональних даних</label>
+        <button class="btn btn--full" type="submit">Надіслати анкету</button>
+        <p class="form__msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="banner">Щоб ти нарешті зміг видихнути<br>і бути спокійним за своє життя</div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__in">
+    <span class="logo"><svg class="ic"><use href="#i-drone"/></svg><span>Пайка дронів з нуля</span></span>
+    <span class="t-muted">Відеоурок · © <span id="year"></span></span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
