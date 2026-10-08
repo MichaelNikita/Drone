@@ -1,7 +1,11 @@
+/**
+ * @OnlyCurrentDoc
+ */
 // Приймає заявки з анкети сайту і записує їх у Google-таблицю.
+// Скрипт має бути створений з самої таблиці (Розширення → Apps Script) —
+// тоді він просить доступ лише до неї, і Google не блокує авторизацію.
 // Встановлення — див. README.md, розділ «Анкета → Google-таблиця».
 
-const SHEET_ID = "1oOYth86DXxONgfKsvrdMuvFUHmsdyQ3O6YHD3oUhlB4";
 const SHEET_GID = 0;
 
 const COLUMNS = [
@@ -27,7 +31,7 @@ const COLUMNS = [
 ];
 
 function getSheet_() {
-  const ss = SpreadsheetApp.openById(SHEET_ID);
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
   return ss.getSheets().find((s) => s.getSheetId() === SHEET_GID) || ss.getSheets()[0];
 }
 

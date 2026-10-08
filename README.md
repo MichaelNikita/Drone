@@ -9,7 +9,7 @@
 
 Заявки пишуться в [таблицю](https://docs.google.com/spreadsheets/d/1oOYth86DXxONgfKsvrdMuvFUHmsdyQ3O6YHD3oUhlB4/edit) через Google Apps Script (`google-apps-script.gs`).
 
-1. Відкрий таблицю → **Розширення → Apps Script**.
+1. Відкрий **саму таблицю** → **Розширення → Apps Script** (саме звідси, не з script.google.com — інакше скрипт не побачить таблицю, а Google заблокує авторизацію).
 2. Видали код у `Code.gs`, встав увесь вміст `google-apps-script.gs`, збережи.
 3. **Розгорнути → Нове розгортання** → тип **Вебзастосунок**:
    - «Виконувати як» — **Я**;
