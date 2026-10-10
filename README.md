@@ -2,7 +2,7 @@
 
 Статичний сайт (`index.html`, `styles.css`, `script.js`), дизайн і контент — з презентації.
 
-- **Відео:** `data-src` на кнопці `.video__play` в `index.html` (зараз — https://youtu.be/xPRZtLe-GAs).
+- **Відео:** `data-yt` на блоці `#video` в `index.html` (зараз — https://youtu.be/nq876tJyNgc).
 - **Хостинг:** будь-який статичний (GitHub Pages, Netlify, Vercel) — просто відкрий `index.html`.
 
 ## Анкета → Google-таблиця
