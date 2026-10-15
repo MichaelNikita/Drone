@@ -114,9 +114,23 @@ bar.addEventListener("click", (e) => {
     video.classList.toggle("is-muted", !player.isMuted());
   }
   if (act === "fs") {
-    if (document.fullscreenElement) document.exitFullscreen();
-    else (video.requestFullscreen || video.webkitRequestFullscreen)?.call(video);
+    const req = video.requestFullscreen || video.webkitRequestFullscreen;
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } else if (video.classList.contains("is-fs")) toggleFakeFs(false);
+    else if (req) req.call(video);
+    else toggleFakeFs(true);
   }
+});
+
+// iPhone не дає розгорнути на весь екран звичайний блок (лише сам <video>),
+// а до відео всередині iframe YouTube доступу немає — тож розтягуємо плеєр через CSS.
+function toggleFakeFs(on) {
+  video.classList.toggle("is-fs", on);
+  document.documentElement.classList.toggle("no-scroll", on);
+}
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && video.classList.contains("is-fs")) toggleFakeFs(false);
 });
 const seek = (clientX) => {
   const r = track.getBoundingClientRect();
